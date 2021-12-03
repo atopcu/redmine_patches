@@ -1,0 +1,4 @@
+pt-BR:
+  label_attachment_destroy_title: Remoção de Anexo em Tarefas
+  label_attachment_destroy_enabled: Impedir remoção de anexo em tarefas fechadas
+  label_attachment_destroy_allow_admin: Administrador pode excluir anexo de tarefa fechada

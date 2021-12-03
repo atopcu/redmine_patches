@@ -1,0 +1,28 @@
+
+<table>
+  <tr>
+    <th colspan="2"><%=l(:label_attachment_destroy_title)%></th>
+  </tr>
+  <tr>
+    <td><%=l(:label_attachment_destroy_enabled)%></td>
+    <td><%= check_box_tag "settings[attachment_destroy_issue_closed]", 
+              1, @settings['attachment_destroy_issue_closed'] %>
+     </td>
+  </tr>
+  <tr>
+    <td><%=l(:label_attachment_destroy_allow_admin)%></td>
+    <td><%= check_box_tag "settings[attachment_destroy_allow_admin]", 1, @settings['attachment_destroy_allow_admin'], {disabled: (@settings['attachment_destroy_issue_closed'] == "1" ? false : true) } %>
+     </td>
+  </tr>
+</table>
+
+<script>
+  $(document).ready(function(e){
+    $("#settings_attachment_destroy_issue_closed").change(function(ev){
+        if ($(ev.target).prop('checked') == false)
+          $("#settings_attachment_destroy_allow_admin").prop('disabled','disabled')
+        else
+          $("#settings_attachment_destroy_allow_admin").prop('disabled',null)
+    })
+  })
+</script>
