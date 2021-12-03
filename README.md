@@ -1,4 +1,4 @@
-Redmine Custom Tables
+Redmine Patches
 ==================
 
 Redmine utilities as configurable patches.
