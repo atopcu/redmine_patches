@@ -20,7 +20,7 @@ module Patch
     def deletable?(user=User.current)
       if container_id
         if container_type == "Issue"
-          s = Setting.find_by(name: 'plugin_redmine_patches').value
+          s = Setting::[]('plugin_redmine_patches')
           return super unless RedminePatches::Utils::bool(s["attachment_destroy_issue_closed"])
           return super if RedminePatches::Utils::bool(s["attachment_destroy_allow_admin"]) and user.admin?
           return !container.closed?
