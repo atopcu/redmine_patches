@@ -1,4 +1,4 @@
 en:
   label_attachment_destroy_title: Attachment Removal from Issues
-  label_attachment_destroy_enabled: Disallow an attachment removal from a closed issue
+  label_attachment_destroy_enabled: Disallow attachment removal from a closed issue
   label_attachment_destroy_allow_admin: Admin is allowed to remove an attachment from a closed issue
