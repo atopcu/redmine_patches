@@ -1,3 +1,12 @@
+<%
+def bool_setting(key)
+  if Rails::VERSION::MAJOR == 4
+    @settings[key]   #already a boolean
+  elsif Rails::VERSION::MAJOR >= 5
+    @settings[key] == "1" ? true : false
+  end
+end
+%>
 
 <table>
   <tr>
@@ -11,7 +20,7 @@
   </tr>
   <tr>
     <td><%=l(:label_attachment_destroy_allow_admin)%></td>
-    <td><%= check_box_tag "settings[attachment_destroy_allow_admin]", 1, @settings['attachment_destroy_allow_admin'], {disabled: (@settings['attachment_destroy_issue_closed'] == "1" ? false : true) } %>
+    <td><%= check_box_tag "settings[attachment_destroy_allow_admin]", 1, @settings['attachment_destroy_allow_admin'], {disabled: (bool_setting('attachment_destroy_issue_closed')? false : true) } %>
      </td>
   </tr>
 </table>
