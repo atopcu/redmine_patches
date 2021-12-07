@@ -13,10 +13,15 @@ Redmine::Plugin.register :redmine_patches do
 
   settings partial: 'settings/redmine_patches_settings.html', default: {
      "attachment_destroy_issue_closed" => true,
-     "attachment_destroy_allow_admin" => false
+     "attachment_destroy_allow_admin" => false,
+     "time_entry_when_issue_closed" => true,
+     "time_entry_when_issue_closed_until" => 48,
+     "time_entry_when_issue_closed_roles" => nil,
   }
   
 end
 
-require_dependency "patches/attachment_patch"
 require_dependency "utils"
+require_dependency "patches/attachment_patch"
+require_dependency "patches/time_entry_patch"
+require_dependency "patches/timelog_controller_patch"
