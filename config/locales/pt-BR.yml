@@ -5,4 +5,4 @@ pt-BR:
   label_time_entries_rules_title: Regras para Horas de Trabalho
   error_time_entry_issue_closed: Você não pode lançar horas em uma tarefa fechada.
   error_time_entry_issue_closed_deadline: O prazo máximo para lançamento de horas já superou o limite de %{limit} horas após o fechamento da tarefa.
-  error_time_entry_issue_closed_destroy: Você não pode remover horas de uma tarefa fechada ou já superou o prazo limite para isso.
+  error_time_entry_issue_closed_destroy: O prazo máximo para editar ou remover horas já superou o limite de %{limit} horas após o fechamento da tarefa.

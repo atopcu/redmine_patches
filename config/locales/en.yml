@@ -5,4 +5,4 @@ en:
   label_time_entries_rules_title: Time Log Conditions
   error_time_entry_issue_closed: Time log isn't allowed when issue is closed.
   error_time_entry_issue_closed_deadline: The maximum deadline for time log has already exceeded the limit of %{limit} hours after the task closes.
-  error_time_entry_issue_closed_destroy: You are not allowed to remove time log after the task closes.
+  error_time_entry_issue_closed_destroy: The maximum deadline to edit or remove a time log has already exceeded the limit of %{limit} hours after the task closes.

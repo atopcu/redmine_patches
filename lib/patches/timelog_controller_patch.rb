@@ -16,12 +16,13 @@ module Patch
 
             respond_to do |format|
               format.html do
-                flash[:error] = l(:error_time_entry_issue_closed_destroy)
+                flash[:error] = l(:error_time_entry_issue_closed_destroy, :limit=>s['time_entry_when_issue_closed_until'])
+                redirect_back_or_default project_time_entries_path(@projects.first), :referer => true
               end
               format.api do
                 @time_entries[i].errors.add(
                   :base,
-                  I18n.t(:error_time_entry_issue_closed_destroy))
+                  I18n.t(:error_time_entry_issue_closed_destroy, :limit=>s['time_entry_when_issue_closed_until']))
                 render_validation_errors(@time_entries)
               end
             end
