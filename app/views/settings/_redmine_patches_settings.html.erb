@@ -61,21 +61,19 @@ end
 
 <script>
   $(document).ready(function(e){
-    $("#settings_attachment_destroy_issue_closed").change(function(ev){
-        if ($(ev.target).prop('checked') == false)
-          $("#settings_attachment_destroy_allow_admin").prop('disabled','disabled')
-        else
-          $("#settings_attachment_destroy_allow_admin").prop('disabled',null)
+    $("#settings_attachment_destroy_issue_closed").on('change, click',function(ev){
+      var prop_val = this.checked? null : 'disabled'
+      $("#settings_attachment_destroy_allow_admin").prop('disabled', prop_val)
     });
 
     /*********************************************
       TIME ENTRIES
     **********************************************/
     $("#settings_time_entry_when_issue_closed").change(function(ev){
-        var prop_val = $(ev.target).prop('checked')? null : 'disabled'
-        $("#time_entry_when_issue_closed_until_days").prop('disabled', prop_val)
-        $("#time_entry_when_issue_closed_until_hours").prop('disabled', prop_val)
-        $("#settings_time_entry_when_issue_closed_roles").prop('disabled', prop_val)
+      var prop_val = this.checked? null : 'disabled'
+      $("#time_entry_when_issue_closed_until_days").prop('disabled', prop_val)
+      $("#time_entry_when_issue_closed_until_hours").prop('disabled', prop_val)
+      $("#settings_time_entry_when_issue_closed_roles").prop('disabled', prop_val)
 
     });
 
