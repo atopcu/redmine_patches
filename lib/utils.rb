@@ -20,7 +20,7 @@ module RedminePatches
 		def self.editable?(issue)
 			s = Setting['plugin_redmine_patches']
 			user = User.current
-			bool(s['time_entry_when_issue_closed']) && ((issue.closed_on + s['time_entry_when_issue_closed_until'].to_i.hours) >= DateTime.now || has_allowed_roles? || user.admin?)
+			bool(s['time_entry_when_issue_closed']) && ((issue.closed_on + s['time_entry_when_issue_closed_until'].to_i.abs.hours) >= DateTime.now || has_allowed_roles? || user.admin?)
 		end
 
 	end
