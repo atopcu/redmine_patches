@@ -6,3 +6,8 @@ pt-BR:
   error_time_entry_issue_closed: Você não pode lançar horas em uma tarefa fechada.
   error_time_entry_issue_closed_deadline: O prazo máximo para lançamento de horas já superou o limite de %{limit} horas após o fechamento da tarefa.
   error_time_entry_issue_closed_destroy: O prazo máximo para editar ou remover horas já superou o limite de %{limit} horas após o fechamento da tarefa.
+  label_time_entries_enabled: Impedir inclusão, edição e remoção de horas de trabalho em tarefa fechada
+  label_time_entries_until: Permitir dentro do prazo após o fechamento da tarefa
+  label_time_entries_role: Permitir se o usuário possuir ao menos um dos papéis
+  label_redmine_patches_days: dias
+  label_redmine_patches_hours: horas

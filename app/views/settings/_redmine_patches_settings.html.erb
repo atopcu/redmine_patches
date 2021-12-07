@@ -6,6 +6,13 @@ def bool_setting(key)
     @settings[key] == "1" ? true : false
   end
 end
+
+def time_entries_until_values
+  hours = @settings['time_entry_when_issue_closed_until']
+  h = (hours.to_i.abs > 24)? hours.to_i.abs%24 : hours.to_i.abs
+  d = (hours.to_i.abs > 24)? hours.to_i.abs/24 : 0
+  { :days => d, :hours => h}
+end
 %>
 
 <table>
@@ -13,7 +20,7 @@ end
     <th colspan="2"><%=l(:label_attachment_destroy_title)%></th>
   </tr>
   <tr>
-    <td><%=l(:label_attachment_destroy_enabled)%></td>
+    <td width="40%"><%=l(:label_attachment_destroy_enabled)%></td>
     <td><%= check_box_tag "settings[attachment_destroy_issue_closed]", 
               1, @settings['attachment_destroy_issue_closed'] %>
      </td>
@@ -21,6 +28,33 @@ end
   <tr>
     <td><%=l(:label_attachment_destroy_allow_admin)%></td>
     <td><%= check_box_tag "settings[attachment_destroy_allow_admin]", 1, @settings['attachment_destroy_allow_admin'], {disabled: (bool_setting('attachment_destroy_issue_closed')? false : true) } %>
+     </td>
+  </tr>
+
+
+
+
+  <tr>
+    <th colspan="2"><%=l(:label_time_entries_rules_title)%></th>
+  </tr>
+  <tr>
+    <td><%=l(:label_time_entries_enabled)%></td>
+    <td><%= check_box_tag "settings[time_entry_when_issue_closed]", 
+              1, @settings['time_entry_when_issue_closed'] %>
+     </td>
+  </tr>
+  <tr>
+    <td><%=l(:label_time_entries_until)%></td>
+    <td>
+      <%= number_field_tag "time_entry_when_issue_closed_until_days", time_entries_until_values[:days], {min:0, disabled: (bool_setting('time_entry_when_issue_closed')? false : true), size:1 } %> <%=l('label_redmine_patches_days')%>
+      <%= number_field_tag "time_entry_when_issue_closed_until_hours", time_entries_until_values[:hours], {min:0, disabled: (bool_setting('time_entry_when_issue_closed')? false : true), size:1 } %> <%=l('label_redmine_patches_hours')%>
+
+      <%= hidden_field_tag "settings[time_entry_when_issue_closed_until]", @settings['time_entry_when_issue_closed_until'] %>
+     </td>
+  </tr>
+  <tr>
+    <td><%=l(:label_time_entries_role)%></td>
+    <td><%= select_tag "settings[time_entry_when_issue_closed_roles]", options_from_collection_for_select(Role.order(:name), :id, :name, @settings['time_entry_when_issue_closed_roles']), {:multiple=>true, disabled: (bool_setting('time_entry_when_issue_closed')? false : true) } %>
      </td>
   </tr>
 </table>
@@ -32,6 +66,23 @@ end
           $("#settings_attachment_destroy_allow_admin").prop('disabled','disabled')
         else
           $("#settings_attachment_destroy_allow_admin").prop('disabled',null)
-    })
+    });
+
+    /*********************************************
+      TIME ENTRIES
+    **********************************************/
+    $("#settings_time_entry_when_issue_closed").change(function(ev){
+        var prop_val = $(ev.target).prop('checked')? null : 'disabled'
+        $("#time_entry_when_issue_closed_until_days").prop('disabled', prop_val)
+        $("#time_entry_when_issue_closed_until_hours").prop('disabled', prop_val)
+        $("#settings_time_entry_when_issue_closed_roles").prop('disabled', prop_val)
+
+    });
+
+    $("#time_entry_when_issue_closed_until_days, #time_entry_when_issue_closed_until_hours").change(function(ev){
+      var hours = parseInt(($("#time_entry_when_issue_closed_until_days").val()*24.0)) + parseInt($("#time_entry_when_issue_closed_until_hours").val())
+      $("#settings_time_entry_when_issue_closed_until").val(hours)
+    });
+
   })
 </script>
