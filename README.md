@@ -18,7 +18,7 @@ Compatibility
 Installation and Setup
 ----------------------
 
-* Clone or [download](https://github.com/marcelbonnet/redmine_patches/archive/master.zip) this repo into your **redmine_root/plugins/** folder
+* Clone or [download the latest version](https://github.com/marcelbonnet/redmine_patches/tags) this repo into your **redmine_root/plugins/** folder
 
 ```
 $ git clone https://github.com/marcelbonnet/redmine_patches.git
