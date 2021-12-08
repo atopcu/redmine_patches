@@ -4,7 +4,7 @@ require 'redmine'
 Redmine::Plugin.register :redmine_patches do
   name 'Patches for Redmine'
   description 'Configurable patches for Redmine'
-  version '1.1.1'
+  version '1.1.2'
   author_url 'https://github.com/marcelbonnet/'
   url 'https://github.com/marcelbonnet/redmine_patches'
   author 'Marcel Bonnet'

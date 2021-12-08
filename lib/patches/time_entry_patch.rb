@@ -13,19 +13,13 @@ module Patch
       if issue.closed?
         if RedminePatches::Utils::bool(s['time_entry_when_issue_closed']) 
           if !RedminePatches::Utils::editable?(issue)
-            if RedminePatches::Utils::before_deadline?(issue)
-              errors.add(
-                :base,
-                I18n.t(:error_time_entry_issue_closed))
-            else
-              errors.add(
-                :base,
-                I18n.t(:error_time_entry_issue_closed_deadline, :limit=>s['time_entry_when_issue_closed_until']))
-            end
+            errors.add(
+              :base,
+              I18n.t(:error_time_entry_issue_closed_deadline, :limit=>s['time_entry_when_issue_closed_until']))
           end
         end
       end
-      
+
     end # method
   end
 end

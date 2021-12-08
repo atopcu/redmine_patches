@@ -3,6 +3,10 @@ en:
   label_attachment_destroy_enabled: Disallow attachment removal from a closed issue
   label_attachment_destroy_allow_admin: Admin is allowed to remove an attachment from a closed issue
   label_time_entries_rules_title: Time Log Conditions
-  error_time_entry_issue_closed: Time log isn't allowed when issue is closed.
   error_time_entry_issue_closed_deadline: The maximum deadline for time log has already exceeded the limit of %{limit} hours after the task closes.
   error_time_entry_issue_closed_destroy: The maximum deadline to edit or remove a time log has already exceeded the limit of %{limit} hours after the task closes.
+  label_time_entries_enabled: Don't allow add, edit or remove time logs after issue closes
+  label_time_entries_until: Allow until deadline after issue closes
+  label_time_entries_role: Always allow if user has at least one role in project
+  label_redmine_patches_days: days
+  label_redmine_patches_hours: hours
