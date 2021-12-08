@@ -12,16 +12,17 @@ module RedminePatches
 			end
 		end
 
-		def self.has_allowed_roles?
+		def self.has_allowed_roles?(issue)
 			s = Setting['plugin_redmine_patches']
-			User.current.roles.collect{|role| role.id.to_s}.intersection(Array.wrap(s['time_entry_when_issue_closed_roles'])).size > 0
+			roles = User.current.roles_for_project(issue.project)
+			roles.collect{|role| role.id.to_s}.intersection(Array.wrap(s['time_entry_when_issue_closed_roles'])).size > 0
 		end
 
 		def self.editable?(issue)
 			s = Setting['plugin_redmine_patches']
 			user = User.current
 			if bool(s['time_entry_when_issue_closed'])
-				return	before_deadline?(issue) || has_allowed_roles? || user.admin?
+				return	before_deadline?(issue) || has_allowed_roles?(issue) || user.admin?
 			else
 				return true
 			end
