@@ -12,7 +12,7 @@ module Patch
 
       @time_entries.each_with_index{|te, i|
         if te.issue.closed?
-          if !RedminePatches::Utils::editable?(te.issue) && !RedminePatches::Utils::has_allowed_roles?
+          if !RedminePatches::Utils::editable?(te.issue)
 
             respond_to do |format|
               format.html do
