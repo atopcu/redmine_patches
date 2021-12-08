@@ -54,7 +54,7 @@ end
   </tr>
   <tr>
     <td><%=l(:label_time_entries_role)%></td>
-    <td><%= select_tag "settings[time_entry_when_issue_closed_roles]", options_from_collection_for_select(Role.order(:name), :id, :name, @settings['time_entry_when_issue_closed_roles']), {:multiple=>true, disabled: (bool_setting('time_entry_when_issue_closed')? false : true) } %>
+    <td><%= select_tag "settings[time_entry_when_issue_closed_roles]", options_from_collection_for_select(Role.order(:name), :id, :name, @settings['time_entry_when_issue_closed_roles']), {:prompt => '', :multiple=>true, disabled: (bool_setting('time_entry_when_issue_closed')? false : true) } %>
      </td>
   </tr>
 </table>
