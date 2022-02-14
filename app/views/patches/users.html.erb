@@ -1,0 +1,49 @@
+<div class="contextual">
+<%#= link_to l(:label_group_new), new_group_path, :class => 'icon icon-add' %>
+</div>
+
+<%= title l(:label_user_plural) %>
+
+<p><%= l(:invalidate_tokens_text) %></p>
+
+<div class="content">
+  <div>
+    <%= form_tag(redmine_patches_users_tokens_invalidate_path) do -%>
+      <%=select_tag "users", options_from_collection_for_select(@users, 'id', 'login'), multiple: true, size: 10 %>
+      <%= submit_tag l(:button_invalidate_tokens) %>
+    <% end -%>
+  </div>
+  <hr>
+  <div>
+    <h3><%= l(:report_tokens_text)%></h3>
+    <%= form_tag(redmine_patches_users_path, method: 'get') do -%>
+      <%= number_field_tag('from_date', 30, min:1) %> <%=l(:"redmine_patches.days")%>
+      <%= submit_tag l(:button_search) %>
+    <% end -%>
+    <table class="list ">
+      <thead>
+        <tr>
+          <%= sort_header_tag('user', :caption => l(:"redmine_patches.login")) %>
+          <%= sort_header_tag('action', :caption => l(:"redmine_patches.action")) %>
+          <%= sort_header_tag('created_on', :caption => l(:"redmine_patches.created_on")) %>
+          <%= sort_header_tag('updated_on', :caption => l(:"redmine_patches.updated_on")) %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tokens.each do |token| %>
+        <tr class="<%= cycle('odd', 'even') %><%= ' disable' unless token.user.active? %>">
+          <td class=""><%= token.user.login %></td>
+          <td class=""><%= token.action %></td>
+          <td class=""><%=distance_of_time_in_words_to_now (token.created_on) %></td>
+          <td class=""><%=distance_of_time_in_words_to_now (token.updated_on) %></td>
+        </tr>
+        <% end unless @tokens.blank? %>
+      </tbody>
+    </table>
+
+    <%= form_tag(redmine_patches_users_tokens_invalidate_old_path) do -%>
+      <%= hidden_field_tag(:from_date, @from )%>
+      <%= submit_tag l(:button_invalidate_older_tokens) %>
+    <% end unless @tokens.blank? -%>
+  </div>
+</div>
