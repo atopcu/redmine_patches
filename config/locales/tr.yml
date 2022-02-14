@@ -1,0 +1,24 @@
+tr:
+  label_attachment_destroy_title: İş Kayıtlarından Dosya Silme
+  label_attachment_destroy_enabled: Kapalı işlerden dosya silinemesin
+  label_attachment_destroy_allow_admin: Admin ler kapalı işlerden dosya silebilsin
+  label_time_entries_rules_title: Zaman Kaydı Koşulları
+  error_time_entry_issue_closed_deadline: İş kapandıktan sonra zaman kaydı girmek için tanınan %{limit} saatlik süre doldu.
+  error_time_entry_issue_closed_destroy: İş kapandıktan sonra zaman kayıtlarını silmek veya düzenlemek için tanınan %{limit} saatlik süre doldu.
+  label_time_entries_enabled: İş kapalıyken zaman kaydı eklenmesi, değiştirilmesi ve silinmesi engellensin
+  label_time_entries_until: İş kapatıldıktan sonra belli bir süre zaman kayıtları yapılabilsin
+  label_time_entries_role: Eğer kullanıcı bu rollerden birine sahipse her zaman yapılabilsin.
+  label_redmine_patches_days: gün
+  label_redmine_patches_hours: saat
+  invalidate_tokens_text: Kullanıcıyı yeni bir API belirteci oluşturmaya zorlayan ve bir sonraki web erişiminde kimlik bilgilerini istemeye zorlayan tüm kullanıcı oturumlarını geçersiz kılar.
+  report_tokens_text: Token Raporu
+  button_invalidate_tokens: Geçersiz Tokenler
+  button_invalidate_older_tokens: Tüm eski tokenleri geçersiz kıl
+  label_redmine_patches: Redmine Patches
+  button_search: Ara
+  redmine_patches:
+    login: Kullanıcı
+    action: Aksiyon
+    created_on: Oluşturulma
+    updated_on: Güncellenme
+    days: Gün
